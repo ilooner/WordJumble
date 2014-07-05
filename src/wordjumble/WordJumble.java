@@ -1,6 +1,7 @@
 package wordjumble;
 
 import java.io.Console;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,6 +9,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class WordJumble 
 {
@@ -27,6 +30,13 @@ public class WordJumble
         }
         
         wordTree = new WordTree(wordDescriptors);
+        
+        wordScanner.close();
+        try {
+            dictionaryInput.close();
+        } catch (IOException ex) {
+            Logger.getLogger(WordJumble.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     public static void main(String[] args) 
